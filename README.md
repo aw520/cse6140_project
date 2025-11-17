@@ -6,7 +6,7 @@ This repository contains the implementation and analysis code for the CSE6140 co
 
 ## Group Members
 
-- Member 1: [Name], (github username: [username])
+- Member 1: Feier Wu, (github username: [username])
 - Member 2: Tomoki Koike, (github username: smallpondtom)
 
 ## Project Structure
