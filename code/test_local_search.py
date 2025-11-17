@@ -1,17 +1,15 @@
-#!/usr/bin/env python3
-
 """
-This is the test script to run the 2-approximation algorithm.
+This is the test script to run the local search (LS) algorithm.
 
-Run the following in the terminal:
-    - python test_approx.py -inst <filename> -alg Approx -time 600
+Run the following command in the terminal:
+    - python test_local_search.py -inst <filename> -alg LS -time 10 -seed 1
     - put the filename of a dataset in <filename>
-    - for example, python test_approx.py -inst Atlanta.tsp -alg Approx -time 600
+    - for example, python test_local_search.py -inst Atlanta.tsp -alg LS -time 10 -seed 1
 """
 
 import argparse
 import os
-from approx import approx
+from local_search import local_search
 from plot_tour import plot_tour
 from write_output import write_output
 
@@ -21,7 +19,7 @@ if __name__ == "__main__":
     parser.add_argument("-inst", required=True, help="filename of dataset")
     parser.add_argument("-alg", required=True, choices=["BF", "Approx", "LS"], help="choose algorithm")
     parser.add_argument("-time", type = int, required=True, help="cut-off time (sec) to terminate algorithm")
-    parser.add_argument("-seed", type = int, required=False, default=None, help="random seed (required only for LS)")
+    parser.add_argument("-seed", type = int, required=False, default=1, help="random seed (required only for LS)")
     args = parser.parse_args()
 
     # Formatting the output file
@@ -30,15 +28,14 @@ if __name__ == "__main__":
     method = args.alg # algorithm
     cutoff = args.time # cut-off time (sec)
     random_seed = args.seed # random seed
-
     filename = os.path.join("../data", args.inst)
 
-    # Run 2-approximation algorithm
-    tour, distance = approx(filename, cutoff)
+    # Run LS algorithm
+    tour, distance = local_search(filename, cutoff, random_seed)
 
     print("tour:", tour)
     print("distance:", distance)
 
     # Write the output file and plot the tour
-    write_output(instance, method, cutoff, tour, distance, None)
-    plot_tour(filename, tour, method, cutoff, None)
+    write_output(instance, method, cutoff, tour, distance, random_seed)
+    plot_tour(filename, tour, method, cutoff, random_seed)

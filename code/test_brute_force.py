@@ -18,18 +18,18 @@ from write_output import write_output
 if __name__ == "__main__":
     # Obtain arguments from the command line
     parser = argparse.ArgumentParser()
-    parser.add_argument("-inst", required=True, help="filename of a dataset")
-    parser.add_argument("-alg", required=True, choices=["BF", "Approx", "LS"], help="choose the algorithm")
-    parser.add_argument("-time", type = int, required=True, help="cut-off time (sec) to terminate the algorithm")
-    parser.add_argument("-seed", type = int, required=False, help="random seed (required only for LS)")
+    parser.add_argument("-inst", required=True, help="filename of dataset")
+    parser.add_argument("-alg", required=True, choices=["BF", "Approx", "LS"], help="choose algorithm")
+    parser.add_argument("-time", type = int, required=True, help="cut-off time (sec) to terminate algorithm")
+    parser.add_argument("-seed", type = int, required=False, default=None, help="random seed (required only for LS)")
     args = parser.parse_args()
 
     # Formatting the output file
-    instance = os.path.basename(args.inst)   # filename of a dataset
-    instance = os.path.splitext(instance)[0] # remove the extension of the filename
-    method = args.alg                        # algorithm
-    cutoff = args.time                       # cut-off time (sec)
-    random_seed = args.seed                  # random seed
+    instance = os.path.basename(args.inst)  # filename of a dataset
+    instance = os.path.splitext(instance)[0]  # remove the extension of the filename
+    method = args.alg  # algorithm
+    cutoff = args.time  # cut-off time (sec)
+    random_seed = args.seed  # random seed
     filename = os.path.join("../data", args.inst)
 
     # Run brute-force algorithm

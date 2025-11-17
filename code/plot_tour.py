@@ -29,7 +29,7 @@ def plot_tour(filename, tour, method, cutoff, seed=None):
     # Save the plot
     filename = os.path.splitext(os.path.basename(filename))[0]
     if method == "LS":
-        out = f"../plot/{filename}_{method}_{cutoff}_{seed}png"
+        out = f"../plot/{filename}_{method}_{cutoff}_{seed}.png"
     else:
         out = f"../plot/{filename}_{method}_{cutoff}.png"
     plt.savefig(out)

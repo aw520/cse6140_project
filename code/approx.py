@@ -149,7 +149,7 @@ def _build_mst(data):
 # Main Approx entry point
 # ------------------------------------------------------------------------------
 
-def Approx(fname, coff):
+def approx(fname, coff):
     """
     2-approximation TSP via MST + preorder traversal.
 
